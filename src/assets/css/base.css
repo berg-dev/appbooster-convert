@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  /*font-family: var(--base-ff);*/
+  /*font-weight: normal;*/
+  /*font-style: normal;*/
+  /*font-size: var(--base-fs);*/
+  /*color: var(--base-fc);*/
+  -webkit-font-smoothing: antialiased;
+}
