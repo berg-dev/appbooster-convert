@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
 class RatesScreen extends Component {
   render() {
     return (
-      <div>
-        <h2>Convert Screen</h2>
-        <NavLink to="/rates">to Exchange rate</NavLink>
-      </div>
+      <Fragment>
+        <Header link={{ url: '/rates', text: '/to Exchange rate' }} title="Convert" />
+      </Fragment>
     );
   }
 }

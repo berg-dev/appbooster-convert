@@ -1,0 +1,7 @@
+.CurrencyPicker__label {
+  color: var(--color-gray);
+  font-size: 0.938em;
+  line-height: normal;
+  text-align: right;
+  font-weight: 500;
+}

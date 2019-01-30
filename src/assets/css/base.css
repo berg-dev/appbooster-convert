@@ -1,7 +1,11 @@
-* {
+@import "reset.css";
+@import "fonts.css";
+@import "variables.css";
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html, body {
@@ -10,10 +14,11 @@ html, body {
 }
 
 body {
-  /*font-family: var(--base-ff);*/
-  /*font-weight: normal;*/
-  /*font-style: normal;*/
-  /*font-size: var(--base-fs);*/
-  /*color: var(--base-fc);*/
+  background-color: var(--base-bg-color);
+  font-family: var(--base-ff);
+  font-size: var(--base-fz);
+  font-weight: normal;
+  font-style: normal;
+  color: var(--base-font-color);
   -webkit-font-smoothing: antialiased;
 }

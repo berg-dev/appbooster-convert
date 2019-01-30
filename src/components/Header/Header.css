@@ -1,0 +1,38 @@
+.Header {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.Header__nav {
+  position: fixed;
+  left: 40px;
+  top: 45px;
+}
+
+.Header__link {
+  font-size: 1.875em;
+  line-height: normal;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-gray);
+}
+
+.Header__link:hover {
+  color: var(--color-accent);
+}
+
+.Header__title {
+  display: inline-block;
+  font-size: 3.75em;
+  line-height: normal;
+  font-weight: 700;
+  color: var(--color-gray);
+  text-align: center;
+}
+
+.Header__CurrencyPicker {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+}
