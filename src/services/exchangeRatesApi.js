@@ -1,12 +1,12 @@
-const API_ENDPOINT = 'http://data.fixer.io/api';
-const KEY = '5bea9e2871876f3d801747f2ac5f11c0';
+import flagsList from '../static/flags';
+const API_ENDPOINT = 'http://www.floatrates.com/daily';
 
 class ExchangeRatesApiService {
-  getDefaultRates(cb = {}) {
+  getDefaultRates(base, cb = {}) {
     const defaultReturn = () => false;
     const { success = defaultReturn, error = defaultReturn } = cb;
 
-    fetch(`${API_ENDPOINT}/latest?access_key=${KEY}`)
+    fetch(`${API_ENDPOINT}/${base.toLowerCase()}.json`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -15,21 +15,19 @@ class ExchangeRatesApiService {
         throw new Error('Unexpected error');
       })
       .then(data => {
-        if (!data.rates) throw new Error('Data error');
-        let list = [];
+        try {
+          const list = Object.keys(data).reduce((acc, ticker, i) => {
+            const tickerUp = ticker.toUpperCase();
+            const { code, rate, inverseRate, name } = data[ticker];
+            const flag = !flagsList[tickerUp] ? '' : flagsList[tickerUp];
 
-        for (let label in data.rates) {
-          if (data.rates.hasOwnProperty(label)) {
-            list.push({
-              label,
-              rate: data.rates[label],
-            });
-          }
-        }
+            return [...acc, { id: i, ticker: code, rate, inverseRate, name, flag }];
+          }, []);
 
-        setTimeout(() => {
           success(list);
-        }, 5000);
+        } catch (err) {
+          throw new Error('Data error');
+        }
       })
       .catch(ex => error({ message: ex.message }));
   }

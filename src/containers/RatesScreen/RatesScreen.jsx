@@ -6,9 +6,7 @@ import * as currenciesSelectors from '../../store/currencies/reducer';
 import './RatesScreen.css';
 
 class RatesScreen extends Component {
-  componentDidMount() {
-    this.props.dispatch(currenciesActions.fetchCurrencies());
-  }
+  componentDidMount() {}
 
   render() {
     return (
