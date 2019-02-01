@@ -103,7 +103,7 @@ class CurrencyPicker extends Component {
                 value.name && (
                   <Fragment>
                     <span className="CurrencyPicker__box-current-label">Current: </span>
-                    <div className="CurrencyPicker__name CurrencyPicker__name_in-box">
+                    <div className="CurrencyPicker__name CurrencyPicker__name_in-box" title={value.name}>
                       <span className="CurrencyPicker__name-text">{value.name}</span>
                       {this.computedCountryFlag(value.ticker)}
                     </div>
@@ -114,25 +114,30 @@ class CurrencyPicker extends Component {
           </div>
           <div className="CurrencyPicker__label CurrencyPicker__label_in-box">Choose base currency</div>
         </div>
-        <ul className="CurrencyPicker__list">
+        <div className="CurrencyPicker__box-list">
           <AvailableCurrencyContext.Consumer>
             {value =>
-              value && value.length > 0
-                ? value.map(item => (
+              value && value.length > 0 ? (
+                <ul className="CurrencyPicker__list">
+                  {value.map(item => (
                     <li className="CurrencyPicker__list-item" key={item.id}>
                       <button
                         className="CurrencyPicker__list-name"
                         type="button"
-                        onClick={() => this.handlerChooseBaseCurrency(item.id)}>
+                        onClick={() => this.handlerChooseBaseCurrency(item.id)}
+                        title={item.name}>
                         {item.name}
                       </button>
                       {item.flag && <span className="CurrencyPicker__list-flag">{item.flag}</span>}
                     </li>
-                  ))
-                : null
+                  ))}
+                </ul>
+              ) : (
+                <div className="CurrencyPicker__list-loading">Loading...</div>
+              )
             }
           </AvailableCurrencyContext.Consumer>
-        </ul>
+        </div>
       </div>
     );
   }

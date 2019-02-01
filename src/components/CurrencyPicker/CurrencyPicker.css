@@ -20,7 +20,9 @@
 }
 .CurrencyPicker__label_in-box {
   color: var(--color-black);
-  width: 33.333333%;
+  width: 100%;
+  max-width: 250px;
+  white-space: nowrap;
 }
 
 .CurrencyPicker__name {
@@ -34,6 +36,13 @@
 .CurrencyPicker__name_in-box {
   margin-top: 0;
   font-size: 0.85em;
+  max-width: calc(100% - 63px);
+}
+
+.CurrencyPicker__name_in-box .CurrencyPicker__name-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .CurrencyPicker__name-text {
@@ -49,11 +58,10 @@
 
 .CurrencyPicker__box {
   width: 100%;
-  min-width: 250px;
+  min-width: 500px;
   max-width: 800px;
-  padding: 15px 15px 15px 15px;
   background: #E7E7E7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin-top: -15px;
   margin-right: -15px;
@@ -61,10 +69,17 @@
 }
 
 .CurrencyPicker__box-head {
-  margin-bottom: 15px;
+  padding: 15px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  background: #D7D7D7;
+  border-radius: 10px 10px 0 0;
+}
+
+.CurrencyPicker__box-list {
+  padding: 15px 15px 15px;
 }
 
 .CurrencyPicker__list {
@@ -72,7 +87,7 @@
   display: flex;
   flex-flow: row wrap;
   margin: 0 -15px -5px;
-  max-height: calc(100vh - 50px - 30px - 18px - 15px);
+  max-height: calc(100vh - 50px - 50px - 30px);
   overflow-y: auto;
 }
 
@@ -112,7 +127,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 33.333333%;
+  width: 100%;
+  max-width: 250px;
   padding: 0 10px;
 }
 
@@ -121,4 +137,9 @@
   font-size: 0.938em;
   line-height: 1.2em;
   color: rgba(0,0,0,0.3);
+}
+
+.CurrencyPicker__list-loading {
+  text-align: center;
+  padding: 30px 0;
 }
