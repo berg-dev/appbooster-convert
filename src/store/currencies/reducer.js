@@ -29,3 +29,21 @@ export function getList(state) {
 export function getBaseCurrency(state) {
   return state.currencies.get('baseCurrency');
 }
+
+export function getAvailableList(state) {
+  const list = state.currencies.get('currenciesList');
+
+  return list.map(item => ({
+    id: item.id,
+    flag: item.flag,
+    name: item.name,
+    ticker: item.ticker,
+  }));
+}
+
+export function getCurrencyDataById(state, id) {
+  const list = state.currencies.get('currenciesList');
+  const index = list.findIndex(item => item.id === id);
+
+  return list[index];
+}

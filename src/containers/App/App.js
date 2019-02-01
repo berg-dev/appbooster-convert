@@ -9,11 +9,12 @@ import ConvertScreen from '../ConvertScreen/ConvertScreen';
 import './App.css';
 
 export const BaseCurrencyContext = React.createContext(false);
+export const AvailableCurrencyContext = React.createContext(false);
 
 const propTypes = {
   baseCurrency: PropTypes.oneOfType([
     PropTypes.shape({
-      ticket: PropTypes.string,
+      ticker: PropTypes.string,
     }),
     PropTypes.bool,
   ]).isRequired,
@@ -28,7 +29,7 @@ class App extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.baseCurrency !== this.props.baseCurrency) {
-      this.props.dispatch(currenciesActions.fetchCurrencies(this.props.baseCurrency.ticket));
+      this.props.dispatch(currenciesActions.fetchCurrencies(this.props.baseCurrency.ticker));
     }
   }
 
@@ -36,13 +37,15 @@ class App extends Component {
     return (
       <div className="App">
         <BaseCurrencyContext.Provider value={this.props.baseCurrency}>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" render={() => <Redirect to="/convert" />} />
-              <Route path="/convert" component={ConvertScreen} />
-              <Route path="/rates" component={RatesScreen} />
-            </Switch>
-          </BrowserRouter>
+          <AvailableCurrencyContext.Provider value={this.props.availableCurrency}>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" render={() => <Redirect to="/convert" />} />
+                <Route path="/convert" component={ConvertScreen} />
+                <Route path="/rates" component={RatesScreen} />
+              </Switch>
+            </BrowserRouter>
+          </AvailableCurrencyContext.Provider>
         </BaseCurrencyContext.Provider>
       </div>
     );
@@ -52,6 +55,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     baseCurrency: currenciesSelectors.getBaseCurrency(state),
+    availableCurrency: currenciesSelectors.getAvailableList(state),
   };
 }
 

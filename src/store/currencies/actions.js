@@ -1,9 +1,9 @@
 import * as types from './actionTypes';
 import exchangeRatesApi from '../../services/exchangeRatesApi';
-import flagsList from '../../static/flags';
+import * as currenciesSelectors from './reducer';
 
 export function fetchCurrencies(base) {
-  return (dispatch, getState) => {
+  return dispatch => {
     exchangeRatesApi.getDefaultRates(base, {
       success: result => {
         dispatch({ type: types.CURRENCY_FETCHED, payload: result });
@@ -18,17 +18,28 @@ export function fetchCurrencies(base) {
 
 export function getBaseCurrency() {
   return dispatch => {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        // TODO Реализовать определение валюты по координатам
-        console.log(position.coords.latitude, position.coords.longitude);
-      },
-      error => {
-        dispatch({
-          type: types.BASE_CURRENCY_UPDATE,
-          payload: { ticket: 'USD', name: 'U.S. Dollar', flag: flagsList['USD'] },
-        });
-      }
-    );
+    const storageItem = localStorage.getItem('baseCurrency');
+
+    if (!storageItem || !storageItem.length) {
+      dispatch(actionUpdateBaseCurrency('USD', 'U.S. Dollar'));
+    } else {
+      const { ticker, name } = JSON.parse(storageItem);
+      dispatch(actionUpdateBaseCurrency(ticker, name));
+    }
   };
+}
+
+export function updateBaseCurrency(id) {
+  return (dispatch, getState) => {
+    const state = getState();
+    const item = currenciesSelectors.getCurrencyDataById(state, id);
+    const { ticker, name } = item;
+
+    dispatch(actionUpdateBaseCurrency(ticker, name));
+    localStorage.setItem('baseCurrency', JSON.stringify({ ticker, name }));
+  };
+}
+
+function actionUpdateBaseCurrency(ticker, name) {
+  return { type: types.BASE_CURRENCY_UPDATE, payload: { ticker, name } };
 }

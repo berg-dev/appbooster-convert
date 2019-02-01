@@ -10,12 +10,15 @@ const propTypes = {
     text: PropTypes.string,
   }).isRequired,
   title: PropTypes.string.isRequired,
+  baseCurrencyUpdater: PropTypes.func,
 };
-const defaultProps = {};
+const defaultProps = {
+  baseCurrencyUpdater: () => {},
+};
 
 class Header extends Component {
   render() {
-    const { link, title } = this.props;
+    const { link, title, baseCurrencyUpdater } = this.props;
 
     return (
       <header className="Header">
@@ -27,7 +30,7 @@ class Header extends Component {
           </nav>
         )}
         {title && <h1 className="Header__title">{title}</h1>}
-        <CurrencyPicker className="Header__CurrencyPicker" />
+        <CurrencyPicker className="Header__CurrencyPicker" baseCurrencyUpdater={baseCurrencyUpdater} />
       </header>
     );
   }

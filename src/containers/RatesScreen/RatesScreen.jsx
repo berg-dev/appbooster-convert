@@ -1,19 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import * as currenciesActions from '../../store/currencies/actions';
 import * as currenciesSelectors from '../../store/currencies/reducer';
+import Header from '../../components/Header/Header';
 import './RatesScreen.css';
 
 class RatesScreen extends Component {
   componentDidMount() {}
 
+  handlerBaseCurrencyUpdate = id => {
+    this.props.dispatch(currenciesActions.updateBaseCurrency(id));
+  };
+
   render() {
     return (
-      <div>
-        <h2>Rates Screen</h2>
-        <NavLink to="/convert">to Convert</NavLink>
-      </div>
+      <Fragment>
+        <Header
+          link={{ url: '/convert', text: '/to Convert' }}
+          title="Exchange rates"
+          baseCurrencyUpdater={this.handlerBaseCurrencyUpdate}
+        />
+      </Fragment>
     );
   }
 }
