@@ -34,16 +34,15 @@ export function getAvailableList(state) {
   const list = state.currencies.get('currenciesList');
 
   return list.map(item => ({
-    id: item.id,
     flag: item.flag,
     name: item.name,
     ticker: item.ticker,
   }));
 }
 
-export function getCurrencyDataById(state, id) {
+export function getCurrencyDataByTicker(state, ticker) {
   const list = state.currencies.get('currenciesList');
-  const index = list.findIndex(item => item.id === id);
+  const index = list.findIndex(item => item.ticker === ticker);
 
   return list[index];
 }

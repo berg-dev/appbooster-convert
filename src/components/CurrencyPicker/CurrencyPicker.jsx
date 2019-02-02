@@ -20,11 +20,13 @@ class CurrencyPicker extends Component {
 
     this.state = {
       selectIsOpen: false,
+      filter: '',
     };
 
     this.toggleSelectIsOpen = this.toggleSelectIsOpen.bind(this);
     this.handlerOuterClick = this.handlerOuterClick.bind(this);
     this.handlerChooseBaseCurrency = this.handlerChooseBaseCurrency.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -45,19 +47,31 @@ class CurrencyPicker extends Component {
     return <span className="CurrencyPicker__name-flag">{flag}</span>;
   }
 
+  computedFilterList(list) {
+    const { filter } = this.state;
+    if (!filter || !filter.length) return list;
+
+    const filterPhrase = filter.toLowerCase();
+    return list.filter(item => item.name.toLowerCase().indexOf(filterPhrase) >= 0);
+  }
+
   handlerOuterClick(e) {
     if (!e.target.closest('.CurrencyPicker')) {
       this.toggleSelectIsOpen(false);
     }
   }
 
-  handlerChooseBaseCurrency(id) {
-    this.props.baseCurrencyUpdater(id);
+  handlerChooseBaseCurrency(ticker) {
+    this.props.baseCurrencyUpdater(ticker);
     this.toggleSelectIsOpen(false);
   }
 
   toggleSelectIsOpen(value) {
     this.setState(state => ({ selectIsOpen: typeof value === 'boolean' ? value : !state.selectIsOpen }));
+  }
+
+  updateFilter(e) {
+    this.setState({ filter: e.target.value });
   }
 
   render() {
@@ -97,6 +111,14 @@ class CurrencyPicker extends Component {
     return (
       <div className="CurrencyPicker__box">
         <div className="CurrencyPicker__box-head">
+          <div className="CurrencyPicker__search">
+            <input
+              type="text"
+              placeholder="search here"
+              className="CurrencyPicker__search-input"
+              onChange={this.updateFilter}
+            />
+          </div>
           <div className="CurrencyPicker__box-current">
             <BaseCurrencyContext.Consumer>
               {value =>
@@ -116,15 +138,15 @@ class CurrencyPicker extends Component {
         </div>
         <div className="CurrencyPicker__box-list">
           <AvailableCurrencyContext.Consumer>
-            {value =>
-              value && value.length > 0 ? (
+            {list =>
+              list && list.length > 0 ? (
                 <ul className="CurrencyPicker__list">
-                  {value.map(item => (
-                    <li className="CurrencyPicker__list-item" key={item.id}>
+                  {this.computedFilterList(list).map(item => (
+                    <li className="CurrencyPicker__list-item" key={item.ticker}>
                       <button
                         className="CurrencyPicker__list-name"
                         type="button"
-                        onClick={() => this.handlerChooseBaseCurrency(item.id)}
+                        onClick={() => this.handlerChooseBaseCurrency(item.ticker)}
                         title={item.name}>
                         {item.name}
                       </button>

@@ -8,8 +8,8 @@ import './RatesScreen.css';
 class RatesScreen extends Component {
   componentDidMount() {}
 
-  handlerBaseCurrencyUpdate = id => {
-    this.props.dispatch(currenciesActions.updateBaseCurrency(id));
+  handlerBaseCurrencyUpdate = ticker => {
+    this.props.dispatch(currenciesActions.updateBaseCurrency(ticker));
   };
 
   render() {

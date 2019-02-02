@@ -29,11 +29,11 @@ export function getBaseCurrency() {
   };
 }
 
-export function updateBaseCurrency(id) {
+export function updateBaseCurrency(ticker) {
   return (dispatch, getState) => {
     const state = getState();
-    const item = currenciesSelectors.getCurrencyDataById(state, id);
-    const { ticker, name } = item;
+    const item = currenciesSelectors.getCurrencyDataByTicker(state, ticker);
+    const { name } = item;
 
     dispatch(actionUpdateBaseCurrency(ticker, name));
     localStorage.setItem('baseCurrency', JSON.stringify({ ticker, name }));
