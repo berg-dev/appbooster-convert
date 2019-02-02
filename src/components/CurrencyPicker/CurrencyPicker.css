@@ -20,10 +20,10 @@
 }
 .CurrencyPicker__label_in-box {
   color: var(--color-black);
-  width: 100%;
-  max-width: 260px;
+  width: 264px;
   white-space: nowrap;
   padding: 0 10px;
+  flex-shrink: 0;
 }
 
 .CurrencyPicker__name {
@@ -58,9 +58,7 @@
 }
 
 .CurrencyPicker__box {
-  width: 100%;
-  min-width: 500px;
-  max-width: 800px;
+  width: 800px;
   background: #E7E7E7;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -131,9 +129,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 100%;
-  max-width: 260px;
+  width: 264px;
   padding: 0 10px;
+  flex-shrink: 0;
 }
 
 .CurrencyPicker__box-current-label {
@@ -150,12 +148,12 @@
 }
 
 .CurrencyPicker__search {
-  width: 100%;
-  max-width: 260px;
+  width: 264px;
   padding: 0 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .CurrencyPicker__search-input {

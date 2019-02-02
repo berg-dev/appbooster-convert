@@ -67,7 +67,14 @@ class CurrencyPicker extends Component {
   }
 
   toggleSelectIsOpen(value) {
-    this.setState(state => ({ selectIsOpen: typeof value === 'boolean' ? value : !state.selectIsOpen }));
+    this.setState(
+      state => ({ selectIsOpen: typeof value === 'boolean' ? value : !state.selectIsOpen }),
+      () => {
+        if (!this.state.selectIsOpen) {
+          this.setState({ filter: '' });
+        }
+      }
+    );
   }
 
   updateFilter(e) {
