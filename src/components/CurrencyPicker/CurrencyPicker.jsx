@@ -42,7 +42,9 @@ class CurrencyPicker extends Component {
   computedCountryFlag(ticker) {
     if (!ticker) return null;
 
-    const flag = flagsList[ticker] || '🏴';
+    const flag = flagsList[ticker];
+
+    if (!flag) return null;
 
     return <span className="CurrencyPicker__name-flag">{flag}</span>;
   }

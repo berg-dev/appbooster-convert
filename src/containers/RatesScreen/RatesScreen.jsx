@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as currenciesActions from '../../store/currencies/actions';
 import * as currenciesSelectors from '../../store/currencies/reducer';
 import Header from '../../components/Header/Header';
+import RatesList from '../../components/RatesList/RatesList';
 import './RatesScreen.css';
 
 class RatesScreen extends Component {
@@ -13,6 +14,8 @@ class RatesScreen extends Component {
   };
 
   render() {
+    const { list } = this.props;
+
     return (
       <Fragment>
         <Header
@@ -20,6 +23,13 @@ class RatesScreen extends Component {
           title="Exchange rates"
           baseCurrencyUpdater={this.handlerBaseCurrencyUpdate}
         />
+        <section className="RatesScreen">
+          <div className="container">
+            <main>
+              <RatesList list={list} />
+            </main>
+          </div>
+        </section>
       </Fragment>
     );
   }
