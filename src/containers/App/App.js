@@ -25,11 +25,16 @@ const defaultProps = {};
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(currenciesActions.getBaseCurrency());
+    this.props.dispatch(currenciesActions.setFavoritesFromStorage());
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.baseCurrency !== this.props.baseCurrency) {
       this.props.dispatch(currenciesActions.fetchCurrencies(this.props.baseCurrency.ticker));
+    }
+
+    if (prevProps.favoritesList.length !== this.props.favoritesList.length) {
+      localStorage.setItem('favoritesCurrency', JSON.stringify(this.props.favoritesList));
     }
   }
 
@@ -56,6 +61,7 @@ function mapStateToProps(state) {
   return {
     baseCurrency: currenciesSelectors.getBaseCurrency(state),
     availableCurrency: currenciesSelectors.getAvailableList(state),
+    favoritesList: currenciesSelectors.getFavoritesList(state),
   };
 }
 

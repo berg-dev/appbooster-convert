@@ -3,9 +3,16 @@ import exchangeRatesApi from '../../services/exchangeRatesApi';
 import * as currenciesSelectors from './reducer';
 
 export function fetchCurrencies(base) {
+  const favoritesList = JSON.parse(localStorage.getItem('favoritesCurrency'));
+
   return dispatch => {
     exchangeRatesApi.getDefaultRates(base, {
       success: result => {
+        favoritesList.forEach(fav => {
+          const index = result.findIndex(item => item.ticker === fav);
+          result[index].isFavorite = true;
+        });
+
         dispatch({ type: types.CURRENCY_FETCHED, payload: result });
       },
 
@@ -37,6 +44,21 @@ export function updateBaseCurrency(ticker) {
 
     dispatch(actionUpdateBaseCurrency(ticker, name));
     localStorage.setItem('baseCurrency', JSON.stringify({ ticker, name }));
+  };
+}
+
+export function favoritesAction(ticker, method) {
+  return dispatch => {
+    const type = method === 'add' ? types.ADD_TO_FAVORITES : types.REMOVE_FROM_FAVORITES;
+    dispatch({ type, payload: ticker });
+  };
+}
+
+export function setFavoritesFromStorage() {
+  const list = JSON.parse(localStorage.getItem('favoritesCurrency'));
+
+  return dispatch => {
+    dispatch({ type: types.SET_FAVORITES_LIST, payload: list });
   };
 }
 

@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 
 const initialState = Map({
   baseCurrency: false,
-  favoriteCurrencies: [],
+  favoritesCurrencies: [],
   currenciesList: [],
 });
 
@@ -17,13 +17,52 @@ export default function reduce(state = initialState, action = {}) {
       return state.update('baseCurrency', () => ({ ...action.payload }));
     }
 
+    case types.ADD_TO_FAVORITES: {
+      return state.map((value, key) => {
+        const ticker = action.payload;
+
+        if (key === 'favoritesCurrencies') return [...value, ticker];
+        if (key === 'currenciesList') {
+          const index = value.findIndex(item => item.ticker === ticker);
+          value[index].isFavorite = true;
+          return value;
+        }
+
+        return value;
+      });
+    }
+
+    case types.REMOVE_FROM_FAVORITES: {
+      return state.map((value, key) => {
+        const ticker = action.payload;
+
+        if (key === 'favoritesCurrencies') return value.filter(item => item !== ticker);
+        if (key === 'currenciesList') {
+          const index = value.findIndex(item => item.ticker === ticker);
+          value[index].isFavorite = false;
+          return value;
+        }
+
+        return value;
+      });
+    }
+
+    case types.SET_FAVORITES_LIST: {
+      return state.update('favoritesCurrencies', () => action.payload);
+    }
+
     default:
       return state;
   }
 }
 
-export function getList(state) {
-  return state.currencies.get('currenciesList');
+export function getSortedByFavoritesList(state) {
+  return state.currencies.get('currenciesList').sort((a, b) => {
+    if (a.isFavorite && !b.isFavorite) return -1;
+    if (b.isFavorite && !a.isFavorite) return 1;
+
+    return 0;
+  });
 }
 
 export function getBaseCurrency(state) {
@@ -45,4 +84,8 @@ export function getCurrencyDataByTicker(state, ticker) {
   const index = list.findIndex(item => item.ticker === ticker);
 
   return list[index];
+}
+
+export function getFavoritesList(state) {
+  return state.currencies.get('favoritesCurrencies');
 }

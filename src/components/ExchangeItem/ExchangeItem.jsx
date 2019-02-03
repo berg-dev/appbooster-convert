@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import cx from 'classnames';
 import { BaseCurrencyContext } from '../../containers/App/App';
 import './ExchangeItem.css';
 
@@ -7,8 +9,11 @@ const propsTypes = {
   data: PropTypes.shape({
     flag: PropTypes.string,
     name: PropTypes.string,
-    ticker: PropTypes.number,
+    inverseRate: PropTypes.number,
+    ticker: PropTypes.string,
+    isFavorite: PropTypes.bool,
   }).isRequired,
+  favoritesAction: PropTypes.func.isRequired,
 };
 const defaultProps = {};
 
@@ -22,11 +27,22 @@ class ExchangeItem extends Component {
     return `${first}.${last}`;
   }
 
+  handleFavoriteClick = () => {
+    const { data, favoritesAction } = this.props;
+
+    const method = data.isFavorite ? 'remove' : 'add';
+    favoritesAction(data.ticker, method);
+  };
+
   render() {
     const { data } = this.props;
 
     return (
-      <article className="ExchangeItem">
+      <article
+        className={cx({
+          ExchangeItem: true,
+          'ExchangeItem_is-favorite': data.isFavorite,
+        })}>
         <div className="ExchangeItem__inner">
           <div className="ExchangeItem__label">
             {data.flag && <span className="ExchangeItem__flag">{data.flag}</span>}
@@ -38,12 +54,23 @@ class ExchangeItem extends Component {
             <BaseCurrencyContext.Consumer>
               {base => (
                 <div className="ExchangeItem__rate-label">
-                  {data.ticker}/{base.ticker}
+                  <button
+                    className={cx({
+                      'ExchangeItem__favorite-btn': true,
+                      'ExchangeItem__favorite-btn_is-active': data.isFavorite,
+                    })}
+                    type="button"
+                    onClick={this.handleFavoriteClick}
+                  />
+                  <span>
+                    {data.ticker}/{base.ticker}
+                  </span>
                 </div>
               )}
             </BaseCurrencyContext.Consumer>
             <div className="ExchangeItem__rate-value">{this.computedValue(data.inverseRate)}</div>
           </div>
+          <NavLink to="/convert" className="ExchangeItem__link" />
         </div>
       </article>
     );

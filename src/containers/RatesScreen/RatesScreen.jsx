@@ -13,6 +13,10 @@ class RatesScreen extends Component {
     this.props.dispatch(currenciesActions.updateBaseCurrency(ticker));
   };
 
+  handlerFavoritesAction = (ticker, method) => {
+    this.props.dispatch(currenciesActions.favoritesAction(ticker, method));
+  };
+
   render() {
     const { list } = this.props;
 
@@ -26,7 +30,7 @@ class RatesScreen extends Component {
         <section className="RatesScreen">
           <div className="container">
             <main>
-              <RatesList list={list} />
+              <RatesList list={list} favoritesAction={this.handlerFavoritesAction} />
             </main>
           </div>
         </section>
@@ -37,7 +41,7 @@ class RatesScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    list: currenciesSelectors.getList(state),
+    list: currenciesSelectors.getSortedByFavoritesList(state),
   };
 }
 

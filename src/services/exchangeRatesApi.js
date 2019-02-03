@@ -21,7 +21,7 @@ class ExchangeRatesApiService {
             const { code, rate, inverseRate, name } = data[ticker];
             const flag = !flagsList[tickerUp] ? '' : flagsList[tickerUp];
 
-            return [...acc, { ticker: code, rate, inverseRate, name, flag }];
+            return [...acc, { ticker: code, rate, inverseRate, name, flag, isFavorite: false }];
           }, []);
 
           success(list);

@@ -5,18 +5,21 @@ import './RatesList.css';
 
 const propsTypes = {
   list: PropTypes.array.isRequired,
+  favoritesAction: PropTypes.func.isRequired,
 };
 const defaultProps = {};
 
 class RatesList extends Component {
   render() {
-    const { list } = this.props;
+    const { list, favoritesAction } = this.props;
 
     return (
       <section className="RatesList">
         <ul className="RatesList__list">
           {list.map(item => (
-            <ExchangeItem data={item} key={item.ticker} />
+            <li className="RatesList__list-item" key={item.ticker}>
+              <ExchangeItem data={item} favoritesAction={favoritesAction} />
+            </li>
           ))}
         </ul>
       </section>
