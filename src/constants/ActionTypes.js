@@ -1,0 +1,3 @@
+export const BASE_CURRENCY_UPDATE = 'session.BASE_CURRENCY_UPDATE';
+
+export const CURRENCIES_LIST_FETCHED = 'currencies.CURRENCIES_LIST_FETCHED';

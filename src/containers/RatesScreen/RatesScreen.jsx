@@ -22,15 +22,15 @@ class RatesScreen extends Component {
 
     return (
       <Fragment>
-        <Header
-          link={{ url: '/convert', text: '/to Convert' }}
-          title="Exchange rates"
-          baseCurrencyUpdater={this.handlerBaseCurrencyUpdate}
-        />
+        {/*<Header*/}
+        {/*link={{ url: '/convert', text: '/to Convert' }}*/}
+        {/*title="Exchange rates"*/}
+        {/*baseCurrencyUpdater={this.handlerBaseCurrencyUpdate}*/}
+        {/*/>*/}
         <section className="RatesScreen">
           <div className="container">
             <main>
-              <RatesList list={list} favoritesAction={this.handlerFavoritesAction} />
+              <RatesList list={[]} favoritesAction={this.handlerFavoritesAction} />
             </main>
           </div>
         </section>
@@ -41,7 +41,7 @@ class RatesScreen extends Component {
 
 function mapStateToProps(state) {
   return {
-    list: currenciesSelectors.getSortedByFavoritesList(state),
+    // list: currenciesSelectors.getSortedByFavoritesList(state),
   };
 }
 

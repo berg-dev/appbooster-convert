@@ -39,8 +39,7 @@ export function getBaseCurrency() {
 export function updateBaseCurrency(ticker) {
   return (dispatch, getState) => {
     const state = getState();
-    const item = currenciesSelectors.getCurrencyDataByTicker(state, ticker);
-    const { name } = item;
+    const { name } = currenciesSelectors.getCurrencyDataByTicker(state, ticker);
 
     dispatch(actionUpdateBaseCurrency(ticker, name));
     localStorage.setItem('baseCurrency', JSON.stringify({ ticker, name }));
