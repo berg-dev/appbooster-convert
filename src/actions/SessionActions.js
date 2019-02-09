@@ -26,3 +26,11 @@ export const updateBaseCurrency = ticker => (dispatch, getState) => {
   dispatch(actionUpdateBaseCurrency(ticker, name));
   localStorage.setItem('baseCurrency', JSON.stringify({ ticker, name }));
 };
+
+export const updatePageTitle = title => dispatch => {
+  dispatch({ type: types.UPDATE_PAGE_TITLE, payload: title });
+};
+
+export const updateHeaderLink = (path, text) => dispatch => {
+  dispatch({ type: types.UPDATE_HEADER_LINK, payload: { path, text } });
+};

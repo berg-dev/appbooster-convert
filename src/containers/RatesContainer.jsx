@@ -1,43 +1,32 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrenciesList } from '../selectors/CommonSelectors';
-// import * as currenciesActions from '../../store/currencies/actions';
-import RatesList from '../components/RatesList/RatesList';
-// import './RatesScreen.css';
+import { updatePageTitle, updateHeaderLink } from '../actions/SessionActions';
+import { getCurrenciesList, getBaseCurrency } from '../selectors/CommonSelectors';
+import Rates from '../components/Rates';
 
 const propTypes = {
   currenciesList: PropTypes.object.isRequired,
+  baseCurrency: PropTypes.object.isRequired,
+  updatePageTitle: PropTypes.func.isRequired,
+  updateHeaderLink: PropTypes.func.isRequired,
 };
 
-class RatesContainer extends Component {
-  componentDidMount() {}
-
-  handlerFavoritesAction = (ticker, method) => {
-    // this.props.dispatch(currenciesActions.favoritesAction(ticker, method));
-  };
-
-  render() {
-    const { currenciesList } = this.props;
-
-    return (
-      <section className="RatesScreen">
-        <div className="container">
-          <main>
-            <RatesList list={currenciesList} favoritesAction={this.handlerFavoritesAction} />
-          </main>
-        </div>
-      </section>
-    );
-  }
-}
+const RatesContainer = props => <Rates {...props} />;
 
 function mapStateToProps(state) {
   return {
+    baseCurrency: getBaseCurrency(state),
     currenciesList: getCurrenciesList(state),
   };
 }
 
 RatesContainer.propTypes = propTypes;
 
-export default connect(mapStateToProps)(RatesContainer);
+export default connect(
+  mapStateToProps,
+  {
+    updatePageTitle,
+    updateHeaderLink,
+  }
+)(RatesContainer);

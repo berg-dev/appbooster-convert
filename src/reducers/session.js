@@ -5,8 +5,8 @@ const initialState = Map({
   baseCurrency: Map(),
   pageTitle: '',
   headerLink: Map({
-    path: '', // => /convert
-    text: '', // => /to Convert
+    path: '',
+    text: '',
   }),
 });
 
@@ -15,6 +15,18 @@ const session = (state = initialState, action = {}) => {
     case types.BASE_CURRENCY_UPDATE: {
       const { ticker, name } = action.payload;
       return state.set('baseCurrency', Map({ ticker, name }));
+    }
+
+    case types.UPDATE_PAGE_TITLE: {
+      return state.set('pageTitle', action.payload);
+    }
+
+    case types.UPDATE_HEADER_LINK: {
+      const { path, text } = action.payload;
+
+      if (typeof path !== 'string' || typeof text !== 'string') return state;
+
+      return state.set('headerLink', Map({ path, text }));
     }
 
     default:
