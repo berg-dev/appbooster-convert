@@ -26,9 +26,8 @@ class ExchangeItem extends Component {
     return `${first}.${last}`;
   }
 
-  handleFavoriteClick = () => {
+  handleOnClick = () => {
     const { data, favoritesAction } = this.props;
-
     const method = data.isFavorite ? 'remove' : 'add';
     favoritesAction(data.ticker, method);
   };
@@ -57,7 +56,7 @@ class ExchangeItem extends Component {
                   'ExchangeItem__favorite-btn_is-active': data.isFavorite,
                 })}
                 type="button"
-                onClick={this.handleFavoriteClick}
+                onClick={this.handleOnClick}
               />
               <span>
                 {data.ticker}/{baseCurrency.ticker}

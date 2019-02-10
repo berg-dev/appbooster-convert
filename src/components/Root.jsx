@@ -10,6 +10,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 const propTypes = {
   initBaseCurrency: PropTypes.func.isRequired,
   fetchCurrenciesList: PropTypes.func.isRequired,
+  initFavoritesList: PropTypes.func.isRequired,
   baseCurrency: PropTypes.object.isRequired,
   history: PropTypes.shape({}).isRequired,
   routes: PropTypes.shape({}).isRequired,
@@ -17,9 +18,10 @@ const propTypes = {
 
 class Root extends Component {
   componentDidMount() {
-    const { initBaseCurrency, fetchCurrenciesList } = this.props;
+    const { initBaseCurrency, fetchCurrenciesList, initFavoritesList } = this.props;
 
     initBaseCurrency();
+    initFavoritesList();
     fetchCurrenciesList();
   }
 

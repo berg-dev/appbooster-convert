@@ -14,3 +14,5 @@ export const getCurrenciesList = state => state.currencies.get('currenciesList')
 
 export const getCurrencyDataByTicker = (state, ticker) =>
   state.currencies.get('currenciesList').find(v => v.ticker === ticker);
+
+export const getFavoritesList = state => state.currencies.get('favoritesCurrencies');

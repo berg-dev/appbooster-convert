@@ -7,6 +7,7 @@ const propTypes = {
   baseCurrency: PropTypes.object.isRequired,
   updatePageTitle: PropTypes.func.isRequired,
   updateHeaderLink: PropTypes.func.isRequired,
+  favoritesAction: PropTypes.func.isRequired,
 };
 
 class Rates extends Component {
@@ -25,7 +26,9 @@ class Rates extends Component {
   }
 
   handlerFavoritesAction = (ticker, method) => {
-    // this.props.dispatch(currenciesActions.favoritesAction(ticker, method));
+    const { favoritesAction } = this.props;
+
+    favoritesAction(ticker, method);
   };
 
   render() {

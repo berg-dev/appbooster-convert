@@ -3,3 +3,6 @@ export const UPDATE_PAGE_TITLE = 'session.UPDATE_PAGE_TITLE';
 export const UPDATE_HEADER_LINK = 'session.UPDATE_HEADER_LINK';
 
 export const CURRENCIES_LIST_FETCHED = 'currencies.CURRENCIES_LIST_FETCHED';
+export const INIT_FAVORITES_LIST = 'currencies.INIT_FAVORITES_LIST';
+export const ADD_TO_FAVORITES = 'currencies.ADD_TO_FAVORITES';
+export const REMOVE_FROM_FAVORITES = 'currencies.REMOVE_FROM_FAVORITES';

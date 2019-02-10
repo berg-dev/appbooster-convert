@@ -3,7 +3,7 @@
   padding-bottom: 30px;
   text-align: center;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 
 .Header__nav {

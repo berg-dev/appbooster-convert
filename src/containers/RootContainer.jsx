@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { initBaseCurrency } from '../actions/SessionActions';
-import { fetchCurrenciesList } from '../actions/CurrenciesActions';
+import { fetchCurrenciesList, initFavoritesList } from '../actions/CurrenciesActions';
 import { getBaseCurrency } from '../selectors/CommonSelectors';
 import Root from '../components/Root';
-import ConvertScreen from './ConvertScreen/ConvertScreen';
+import ConvertContainer from './ConvertContainer';
 import RatesContainer from './RatesContainer';
 import { CONVERT_PATH, RATES_PATH } from '../constants/RouterConstants';
 
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
   return {
     baseCurrency: getBaseCurrency(state),
     routes: {
-      [CONVERT_PATH]: ConvertScreen,
+      [CONVERT_PATH]: ConvertContainer,
       [RATES_PATH]: RatesContainer,
     },
   };
@@ -26,5 +26,6 @@ export default connect(
   {
     initBaseCurrency,
     fetchCurrenciesList,
+    initFavoritesList,
   }
 )(RootContainer);
