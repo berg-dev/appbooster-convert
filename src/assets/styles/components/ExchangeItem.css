@@ -57,9 +57,10 @@
 .ExchangeItem__rate-label {
   color: #C4C4C4;
   font-size: 0.875em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
 }
 
 .ExchangeItem__rate-value {
@@ -71,15 +72,15 @@
   background-color: transparent;
   width: 15px;
   height: 15px;
-  margin-right: 5px;
   cursor: pointer;
   font-size: 15px;
   color: #C4C4C4;
   padding: 0;
-  margin-top: -5px;
-  position: relative;
   z-index: 10;
   display: none;
+  position: absolute;
+  right: calc(100% + 5px);
+  top: -3px;
 }
 
 .ExchangeItem__favorite-btn:before {

@@ -31,3 +31,25 @@
   padding: 0 15px;
   margin-top: -1px;
 }
+
+.RatesList__search {
+  margin-bottom: 15px;
+}
+
+.RatesList__search-field {
+  border: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+  font-family: var(--base-ff);
+}
+
+.RatesList__search-field::-webkit-input-placeholder { color: var(--color-gray); transition: opacity .3s ease-in-out; opacity: 1; }
+.RatesList__search-field::-moz-placeholder { color: var(--color-gray); transition: opacity .3s ease-in-out; opacity: 1; }
+.RatesList__search-field:-ms-input-placeholder { color: var(--color-gray); transition: opacity .3s ease-in-out; opacity: 1; }
+.RatesList__search-field:-moz-placeholder { color: var(--color-gray); transition: opacity .3s ease-in-out; opacity: 1; }
+.RatesList__search-field:focus::-webkit-input-placeholder { opacity: 0; }
+.RatesList__search-field:focus::-moz-placeholder { opacity: 0; }
+.RatesList__search-field:focus:-ms-input-placeholder { opacity: 0; }
+.RatesList__search-field:focus:-moz-placeholder { opacity: 0; }
