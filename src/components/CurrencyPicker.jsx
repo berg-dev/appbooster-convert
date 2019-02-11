@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import flagsList from '../static/flags';
-// import './CurrencyPicker.css';
 
 const propTypes = {
   className: PropTypes.string,

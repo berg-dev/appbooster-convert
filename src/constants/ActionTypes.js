@@ -6,3 +6,6 @@ export const CURRENCIES_LIST_FETCHED = 'currencies.CURRENCIES_LIST_FETCHED';
 export const INIT_FAVORITES_LIST = 'currencies.INIT_FAVORITES_LIST';
 export const ADD_TO_FAVORITES = 'currencies.ADD_TO_FAVORITES';
 export const REMOVE_FROM_FAVORITES = 'currencies.REMOVE_FROM_FAVORITES';
+
+export const CONVERTER_BASE_UPDATE = 'converter.CONVERTER_BASE_UPDATE';
+export const CONVERTER_SECOND_UPDATE = 'converter.CONVERTER_SECOND_UPDATE';

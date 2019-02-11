@@ -1,0 +1,51 @@
+.Converter {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.Converter__part {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.Converter__part_base,
+.Converter__part_base .Converter__field-input { text-align: left; }
+.Converter__part_second,
+.Converter__part_second .Converter__field-input { text-align: right; }
+
+.Converter__flag {
+  font-size: 1.875em;
+}
+
+.Converter__name {
+  font-size: 1.500em;
+  margin-bottom: 10px;
+}
+
+.Converter__rate {
+  color: #C4C4C4;
+  font-size: 1em;
+  margin-bottom: 40px;
+}
+
+.Converter__field-input {
+  width: auto;
+  max-width: 100%;
+  float: left;
+  border: 0;
+  padding: 0;
+  font-size: 40px;
+  font-family: var(--base-ff);
+  background-color: transparent;
+}

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
-// import './ExchangeItem.css';
 
 const propsTypes = {
   data: PropTypes.shape({
@@ -17,14 +16,14 @@ const propsTypes = {
 };
 
 class ExchangeItem extends Component {
-  computedValue(rate) {
+  computedValue = rate => {
     const stringRate = rate.toString();
     const indexDot = stringRate.indexOf('.');
     const first = stringRate.substr(0, indexDot);
     const last = stringRate.substr(indexDot + 1, 4);
 
     return `${first}.${last}`;
-  }
+  };
 
   handleOnClick = () => {
     const { data, favoritesAction } = this.props;
@@ -64,7 +63,7 @@ class ExchangeItem extends Component {
             </div>
             <div className="ExchangeItem__rate-value">{this.computedValue(data.inverseRate)}</div>
           </div>
-          <NavLink to="/convert" className="ExchangeItem__link" />
+          <NavLink to={`/convert?${baseCurrency.ticker}+${data.ticker}`} className="ExchangeItem__link" />
         </div>
       </article>
     );

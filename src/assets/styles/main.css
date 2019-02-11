@@ -9,5 +9,7 @@
 @import "./components/CurrencyPicker.css";
 @import "./components/RatesList.css";
 @import "./components/RatesScreen.css";
+@import "./components/ConvertScreen.css";
 @import "./components/ExchangeItem.css";
+@import "./components/Converter.css";
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { initBaseCurrency } from '../actions/SessionActions';
+import { initConverter } from '../actions/ConverterActions';
 import { fetchCurrenciesList, initFavoritesList } from '../actions/CurrenciesActions';
 import { getBaseCurrency } from '../selectors/CommonSelectors';
 import Root from '../components/Root';
@@ -25,6 +26,7 @@ export default connect(
   mapStateToProps,
   {
     initBaseCurrency,
+    initConverter,
     fetchCurrenciesList,
     initFavoritesList,
   }

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Converter from './Converter';
 
 const propTypes = {
+  location: PropTypes.object.isRequired,
   updatePageTitle: PropTypes.func.isRequired,
   updateHeaderLink: PropTypes.func.isRequired,
+  base: PropTypes.object.isRequired,
+  second: PropTypes.object.isRequired,
 };
 
-class Convert extends Component {
+class ConvertScreen extends Component {
   componentDidMount() {
     const { updatePageTitle, updateHeaderLink } = this.props;
 
@@ -22,14 +26,18 @@ class Convert extends Component {
   }
 
   render() {
+    const { base, second } = this.props;
+
     return (
       <section className="ConvertScreen">
-        <div className="container">Convert Screen</div>
+        <div className="container">
+          <Converter baseValue={base} secondValue={second} />
+        </div>
       </section>
     );
   }
 }
 
-Convert.propTypes = propTypes;
+ConvertScreen.propTypes = propTypes;
 
-export default Convert;
+export default ConvertScreen;

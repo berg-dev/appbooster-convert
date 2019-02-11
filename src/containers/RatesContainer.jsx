@@ -5,7 +5,7 @@ import { updatePageTitle, updateHeaderLink } from '../actions/SessionActions';
 import { favoritesAction } from '../actions/CurrenciesActions';
 import { getBaseCurrency } from '../selectors/CommonSelectors';
 import { listSortedByFavorites } from '../selectors/CurrenciesSelectors';
-import Rates from '../components/Rates';
+import RatesScreen from '../components/RatesScreen';
 
 const propTypes = {
   currenciesList: PropTypes.object.isRequired,
@@ -15,7 +15,7 @@ const propTypes = {
   favoritesAction: PropTypes.func.isRequired,
 };
 
-const RatesContainer = props => <Rates {...props} />;
+const RatesContainer = props => <RatesScreen {...props} />;
 
 function mapStateToProps(state) {
   return {

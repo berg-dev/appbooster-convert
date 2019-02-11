@@ -10,7 +10,7 @@ const propTypes = {
   favoritesAction: PropTypes.func.isRequired,
 };
 
-class Rates extends Component {
+class RatesScreen extends Component {
   componentDidMount() {
     const { updatePageTitle, updateHeaderLink } = this.props;
 
@@ -50,6 +50,6 @@ class Rates extends Component {
   }
 }
 
-Rates.propTypes = propTypes;
+RatesScreen.propTypes = propTypes;
 
-export default Rates;
+export default RatesScreen;

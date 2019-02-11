@@ -9,6 +9,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 
 const propTypes = {
   initBaseCurrency: PropTypes.func.isRequired,
+  initConverter: PropTypes.func.isRequired,
   fetchCurrenciesList: PropTypes.func.isRequired,
   initFavoritesList: PropTypes.func.isRequired,
   baseCurrency: PropTypes.object.isRequired,
@@ -18,11 +19,12 @@ const propTypes = {
 
 class Root extends Component {
   componentDidMount() {
-    const { initBaseCurrency, fetchCurrenciesList, initFavoritesList } = this.props;
+    const { initBaseCurrency, fetchCurrenciesList, initFavoritesList, initConverter } = this.props;
 
     initBaseCurrency();
     initFavoritesList();
     fetchCurrenciesList();
+    initConverter();
   }
 
   componentDidUpdate(prevProps) {
