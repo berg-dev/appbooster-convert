@@ -8,6 +8,7 @@ const propTypes = {
   updateHeaderLink: PropTypes.func.isRequired,
   base: PropTypes.object.isRequired,
   second: PropTypes.object.isRequired,
+  currenciesList: PropTypes.object.isRequired,
 };
 
 class ConvertScreen extends Component {
@@ -26,12 +27,12 @@ class ConvertScreen extends Component {
   }
 
   render() {
-    const { base, second } = this.props;
+    const { base, second, currenciesList } = this.props;
 
     return (
       <section className="ConvertScreen">
         <div className="container">
-          <Converter baseValue={base} secondValue={second} />
+          <Converter baseValue={base} secondValue={second} currenciesList={currenciesList} />
         </div>
       </section>
     );

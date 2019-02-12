@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updatePageTitle, updateHeaderLink } from '../store/session/actions';
 import { getConverterValue } from '../store/converter/selectors';
+import { getCurrenciesList } from '../store/currencies/selectors';
 import ConvertScreen from '../components/ConvertScreen';
 
 const propTypes = {
@@ -16,6 +17,7 @@ function mapStateToProps(state) {
   return {
     base: getConverterValue(state, 'base'),
     second: getConverterValue(state, 'second'),
+    currenciesList: getCurrenciesList(state),
   };
 }
 

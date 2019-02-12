@@ -14,7 +14,6 @@ const propTypes = {
   initFavoritesList: PropTypes.func.isRequired,
   baseCurrency: PropTypes.object.isRequired,
   history: PropTypes.shape({}).isRequired,
-  routes: PropTypes.shape({}).isRequired,
 };
 
 class Root extends Component {
