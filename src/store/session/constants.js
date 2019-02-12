@@ -1,0 +1,3 @@
+export const BASE_CURRENCY_UPDATE = 'session.BASE_CURRENCY_UPDATE';
+export const UPDATE_PAGE_TITLE = 'session.UPDATE_PAGE_TITLE';
+export const UPDATE_HEADER_LINK = 'session.UPDATE_HEADER_LINK';

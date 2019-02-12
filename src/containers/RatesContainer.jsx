@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updatePageTitle, updateHeaderLink } from '../actions/SessionActions';
-import { favoritesAction } from '../actions/CurrenciesActions';
-import { getBaseCurrency } from '../selectors/CommonSelectors';
-import { listSortedByFavorites } from '../selectors/CurrenciesSelectors';
+import { updatePageTitle, updateHeaderLink } from '../store/session/actions';
+import { favoritesAction } from '../store/currencies/actions';
+import { getBaseCurrency } from '../store/session/selectors';
+import { listSortedByFavorites } from '../store/currencies/selectors';
 import RatesScreen from '../components/RatesScreen';
 
 const propTypes = {

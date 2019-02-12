@@ -1,4 +1,4 @@
-import flagsList from '../static/flags';
+import flagsList from '../assets/static/flags';
 const API_ENDPOINT = 'http://www.floatrates.com/daily';
 
 class ExchangeRatesApiService {

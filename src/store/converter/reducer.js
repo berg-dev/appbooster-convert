@@ -1,5 +1,5 @@
-import * as types from '../constants/ActionTypes';
-import { Map, List } from 'immutable';
+import * as types from './constants';
+import { Map } from 'immutable';
 
 const initialState = Map({
   base: Map(),

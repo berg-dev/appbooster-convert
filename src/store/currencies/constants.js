@@ -1,0 +1,4 @@
+export const CURRENCIES_LIST_FETCHED = 'currencies.CURRENCIES_LIST_FETCHED';
+export const INIT_FAVORITES_LIST = 'currencies.INIT_FAVORITES_LIST';
+export const ADD_TO_FAVORITES = 'currencies.ADD_TO_FAVORITES';
+export const REMOVE_FROM_FAVORITES = 'currencies.REMOVE_FROM_FAVORITES';

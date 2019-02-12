@@ -1,5 +1,5 @@
-import * as types from '../constants/ActionTypes';
-import flagsList from '../static/flags';
+import * as types from './constants';
+import flagsList from '../../assets/static/flags';
 
 export const initConverter = () => dispatch => {
   const base = { ticker: 'USD', name: 'U.S. Dollar', flag: flagsList['USD'], multi: 1 };

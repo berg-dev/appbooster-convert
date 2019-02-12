@@ -3,9 +3,9 @@ import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
-import { INDEX_PATH } from '../constants/RouterConstants';
-
 import HeaderContainer from '../containers/HeaderContainer';
+import ConvertContainer from '../containers/ConvertContainer';
+import RatesContainer from '../containers/RatesContainer';
 
 const propTypes = {
   initBaseCurrency: PropTypes.func.isRequired,
@@ -39,17 +39,16 @@ class Root extends Component {
   }
 
   render() {
-    const { history, routes } = this.props;
+    const { history } = this.props;
 
     return (
       <ConnectedRouter history={history}>
         <Fragment>
           <HeaderContainer />
           <Switch>
-            <Route path={INDEX_PATH} exact render={() => <Redirect to="/convert" />} />
-            {Object.keys(routes).map(route => (
-              <Route path={route} component={routes[route]} key={route} />
-            ))}
+            <Route path="/" exact render={() => <Redirect to="/convert" />} />
+            <Route path="/convert" component={ConvertContainer} />
+            <Route path="/rates" component={RatesContainer} />
           </Switch>
         </Fragment>
       </ConnectedRouter>

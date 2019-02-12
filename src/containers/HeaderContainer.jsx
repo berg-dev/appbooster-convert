@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { getBaseCurrency, getPageTitle, getHeaderLink, getCurrenciesList } from '../selectors/CommonSelectors';
-import { updateBaseCurrency } from '../actions/SessionActions';
+import { getBaseCurrency, getPageTitle, getHeaderLink } from '../store/session/selectors';
+import { getCurrenciesList } from '../store/currencies/selectors';
+import { updateBaseCurrency } from '../store/session/actions';
 
 const HeaderContainer = props => <Header {...props} />;
 

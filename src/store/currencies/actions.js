@@ -1,6 +1,7 @@
-import * as types from '../constants/ActionTypes';
-import exchangeRatesApi from '../services/exchangeRatesApi';
-import { getBaseCurrency, getFavoritesList } from '../selectors/CommonSelectors';
+import * as types from './constants';
+import exchangeRatesApi from '../../services/exchangeRatesApi';
+import { getFavoritesList } from './selectors';
+import { getBaseCurrency } from '../session/selectors';
 
 export const fetchCurrenciesList = () => (dispatch, getStore) => {
   const store = getStore();

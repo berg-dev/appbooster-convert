@@ -1,5 +1,5 @@
-import * as types from '../constants/ActionTypes';
-import { getCurrencyDataByTicker } from '../selectors/CommonSelectors';
+import * as types from './constants';
+import { getCurrencyDataByTicker } from '../currencies/selectors';
 
 const actionUpdateBaseCurrency = (ticker, name) => ({
   type: types.BASE_CURRENCY_UPDATE,

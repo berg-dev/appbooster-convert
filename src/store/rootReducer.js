@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import session from './session';
-import currencies from './currencies';
-import converter from './converter';
+import session from './session/reducer';
+import currencies from './currencies/reducer';
+import converter from './converter/reducer';
 
 export default history =>
   combineReducers({

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updatePageTitle, updateHeaderLink } from '../actions/SessionActions';
-import { getConverterValue } from '../selectors/CommonSelectors';
+import { updatePageTitle, updateHeaderLink } from '../store/session/actions';
+import { getConverterValue } from '../store/converter/selectors';
 import ConvertScreen from '../components/ConvertScreen';
 
 const propTypes = {

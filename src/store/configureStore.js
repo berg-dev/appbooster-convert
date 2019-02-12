@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from '../reducers/index';
+import rootReducer from './rootReducer';
 
 export const history = createBrowserHistory();
 
