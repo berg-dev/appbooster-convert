@@ -1,2 +1,2 @@
-export const CONVERTER_BASE_UPDATE = 'converter.CONVERTER_BASE_UPDATE';
-export const CONVERTER_SECOND_UPDATE = 'converter.CONVERTER_SECOND_UPDATE';
+export const PAIR_UPDATE = 'converter.PAIR_UPDATE';
+export const RATE_UPDATE = 'converter.RATE_UPDATE';

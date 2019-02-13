@@ -12,7 +12,7 @@ class ExchangeRatesApiService {
           return response.json();
         }
 
-        throw new Error('Unexpected error');
+        throw new Error('Fetch error');
       })
       .then(data => {
         try {

@@ -19,6 +19,11 @@ class ExchangeItem extends Component {
   computedValue = rate => {
     const stringRate = rate.toString();
     const indexDot = stringRate.indexOf('.');
+
+    if (indexDot <= 0) {
+      return stringRate;
+    }
+
     const first = stringRate.substr(0, indexDot);
     const last = stringRate.substr(indexDot + 1, 4);
 

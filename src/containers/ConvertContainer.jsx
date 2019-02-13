@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updatePageTitle, updateHeaderLink } from '../store/session/actions';
-import { getConverterValue } from '../store/converter/selectors';
+import { getConverterPair, getConverterRate } from '../store/converter/selectors';
+import { fetchRates, changeItemInPair } from '../store/converter/actions';
 import { getCurrenciesList } from '../store/currencies/selectors';
 import ConvertScreen from '../components/ConvertScreen';
 
@@ -15,8 +16,8 @@ const ConvertContainer = props => <ConvertScreen {...props} />;
 
 function mapStateToProps(state) {
   return {
-    base: getConverterValue(state, 'base'),
-    second: getConverterValue(state, 'second'),
+    pairToConvert: getConverterPair(state),
+    convertRate: getConverterRate(state),
     currenciesList: getCurrenciesList(state),
   };
 }
@@ -28,5 +29,7 @@ export default connect(
   {
     updatePageTitle,
     updateHeaderLink,
+    fetchRates,
+    changeItemInPair,
   }
 )(ConvertContainer);

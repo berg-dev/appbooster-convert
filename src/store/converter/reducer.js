@@ -1,19 +1,22 @@
 import * as types from './constants';
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 
 const initialState = Map({
-  base: Map(),
-  second: Map(),
+  pair: List([]),
+  rate: Map({
+    base: 0,
+    inverse: 0,
+  }),
 });
 
 const converter = (state = initialState, action = {}) => {
   switch (action.type) {
-    case types.CONVERTER_BASE_UPDATE: {
-      return state.set('base', Map(action.payload));
+    case types.PAIR_UPDATE: {
+      return state.set('pair', List(action.payload));
     }
 
-    case types.CONVERTER_SECOND_UPDATE: {
-      return state.set('second', Map(action.payload));
+    case types.RATE_UPDATE: {
+      return state.set('rate', Map({ ...action.payload }));
     }
 
     default:

@@ -1,5 +1,6 @@
 import * as types from './constants';
 import exchangeRatesApi from '../../services/exchangeRatesApi';
+import flagList from '../../assets/static/flags';
 import { getFavoritesList } from './selectors';
 import { getBaseCurrency } from '../session/selectors';
 
@@ -17,7 +18,15 @@ export const fetchCurrenciesList = () => (dispatch, getStore) => {
         }
       });
 
-      dispatch({ type: types.CURRENCIES_LIST_FETCHED, payload: result });
+      const baseCurrencyData = {
+        ...base,
+        rate: 1.0,
+        inverseRate: 1.0,
+        isFavorite: favoritesList.findIndex(fav => fav === base.ticker) >= 0,
+        flag: flagList[base.ticker],
+      };
+
+      dispatch({ type: types.CURRENCIES_LIST_FETCHED, payload: [baseCurrencyData, ...result] });
     },
 
     error: error => {
