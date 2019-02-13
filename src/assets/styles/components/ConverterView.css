@@ -1,0 +1,138 @@
+.ConverterView {
+  width: calc(50% - 0.5px);
+  flex-shrink: 0;
+  padding: 40px 30px 40px 30px;
+  background: #FFF;
+  transition: background 0.3s ease-in-out;
+  position: relative;
+}
+
+.ConverterView:hover { background: #F9F9F9 }
+.ConverterView:focus { background: #F9F9F9 }
+.ConverterView:hover .ConverterView__tools { opacity: 1 }
+.ConverterView:focus .ConverterView__tools { opacity: 1 }
+
+.ConverterView__tools {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  top: 10px;
+  user-focus: none;
+  user-select: none;
+}
+
+.ConverterView:first-child,
+.ConverterView:first-child .ConverterView__field-input {
+  text-align: left;
+}
+.ConverterView:first-child .ConverterView__tools {
+  right: 30px;
+}
+
+.ConverterView:first-child .ConverterView__edit-close {
+  left: 20px;
+}
+
+.ConverterView:last-child,
+.ConverterView:last-child .ConverterView__field-input {
+  text-align: right;
+}
+
+.ConverterView:last-child .ConverterView__tools {
+  left: 30px;
+}
+
+.ConverterView:last-child .ConverterView__edit-close {
+  right: 20px;
+}
+
+.ConverterView__flag {
+  font-size: 1.875em;
+}
+
+.ConverterView__name {
+  font-size: 1.500em;
+  margin-bottom: 10px;
+}
+
+.ConverterView__rate {
+  color: #C4C4C4;
+  font-size: 1em;
+  margin-bottom: 40px;
+}
+
+.ConverterView__field-input {
+  width: auto;
+  max-width: 100%;
+  float: left;
+  border: 1px solid rgba(120, 120, 120, 0.1);
+  padding: 4px 6px;
+  border-radius: 8px;
+  font-size: 40px;
+  font-family: var(--base-ff);
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.ConverterView__field-input:hover {
+  border-color: rgba(120, 120, 120, 0.6);
+}
+
+.ConverterView__field-input:focus {
+  border-color: rgba(120, 120, 120, 0.6);
+}
+
+.ConverterView__edit-box {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #E9E9E9;
+  padding: 30px;
+}
+
+.ConverterView__edit-list {
+  display: flex;
+  flex-flow: row wrap;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.ConverterView__edit-item {
+  width: 16.666666%;
+  flex-shrink: 0;
+}
+
+.ConverterView__edit-button {
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 3px;
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ConverterView__edit-button:hover {
+  border-color: var(--color-accent);
+}
+
+.ConverterView__edit-close {
+  position: absolute;
+  top: 10px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.ConverterView__field-result {
+  font-size: 40px;
+}

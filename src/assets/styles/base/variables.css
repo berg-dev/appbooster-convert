@@ -1,0 +1,16 @@
+:root {
+  --base-ff: Roboto, Arial, sans-serif;
+
+  --base-fz: 16px;
+
+  --color-black: #000;
+  --color-white: #fff;
+  --color-purple: #8884D8;
+  --color-gray: #BBBBBB;
+
+
+
+  --color-accent: var(--color-purple);
+  --base-bg-color: var(--color-white);
+  --base-font-color: var(--color-black);
+}
