@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updatePageTitle, updateHeaderLink } from '../store/session/actions';
 import { getConverterPair, getConverterRate } from '../store/converter/selectors';
-import { fetchRates, changeItemInPair } from '../store/converter/actions';
+import { fetchRates, changeItemInPair, updateConvertPair } from '../store/converter/actions';
 import { getCurrenciesList } from '../store/currencies/selectors';
 import ConvertScreen from '../components/ConvertScreen';
 
@@ -23,5 +23,6 @@ export default connect(
     updateHeaderLink,
     fetchRates,
     changeItemInPair,
+    updateConvertPair,
   }
 )(ConvertContainer);

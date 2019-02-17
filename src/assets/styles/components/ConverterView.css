@@ -136,3 +136,7 @@
 .ConverterView__field-result {
   font-size: 40px;
 }
+
+.ConverterView__changer {
+  cursor: pointer;
+}
