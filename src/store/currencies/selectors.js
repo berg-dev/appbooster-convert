@@ -5,7 +5,7 @@ export const getFavoritesList = state => state.currencies.get('favoritesCurrenci
 export const getCurrencyDataByTicker = (state, ticker) =>
   state.currencies.get('currenciesList').find(v => v.ticker === ticker);
 
-export const getCurrenciesList = state => state.currencies.get('currenciesList');
+export const getCurrenciesList = state => state.currencies.get('currenciesList').toArray();
 
 export const listSortedByFavorites = createSelector(
   getCurrenciesList,

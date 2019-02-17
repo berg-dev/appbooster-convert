@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RatesList from './RatesList';
 
 const propTypes = {
-  currenciesList: PropTypes.object.isRequired,
+  currenciesList: PropTypes.array.isRequired,
   baseCurrency: PropTypes.object.isRequired,
   updatePageTitle: PropTypes.func.isRequired,
   updateHeaderLink: PropTypes.func.isRequired,

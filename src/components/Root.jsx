@@ -22,8 +22,7 @@ class Root extends Component {
 
     initBaseCurrency();
     initFavoritesList();
-    fetchCurrenciesList();
-    initConverter();
+    fetchCurrenciesList(initConverter);
   }
 
   componentDidUpdate(prevProps) {

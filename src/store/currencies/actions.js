@@ -1,16 +1,16 @@
 import * as types from './constants';
 import exchangeRatesApi from '../../services/exchangeRatesApi';
-import flagList from '../../assets/static/flags';
 import { getFavoritesList } from './selectors';
 import { getBaseCurrency } from '../session/selectors';
 
-export const fetchCurrenciesList = () => (dispatch, getStore) => {
+export const fetchCurrenciesList = callback => (dispatch, getStore) => {
   const store = getStore();
   const base = getBaseCurrency(store);
   const favoritesList = getFavoritesList(store);
 
-  exchangeRatesApi.getDefaultRates(base.ticker, {
-    success: result => {
+  exchangeRatesApi
+    .getDefaultRates(base)
+    .then(result => {
       favoritesList.forEach(fav => {
         const index = result.findIndex(item => item.ticker === fav);
         if (result[index]) {
@@ -18,21 +18,10 @@ export const fetchCurrenciesList = () => (dispatch, getStore) => {
         }
       });
 
-      const baseCurrencyData = {
-        ...base,
-        rate: 1.0,
-        inverseRate: 1.0,
-        isFavorite: favoritesList.findIndex(fav => fav === base.ticker) >= 0,
-        flag: flagList[base.ticker],
-      };
-
-      dispatch({ type: types.CURRENCIES_LIST_FETCHED, payload: [baseCurrencyData, ...result] });
-    },
-
-    error: error => {
-      console.error(error.message);
-    },
-  });
+      dispatch({ type: types.CURRENCIES_LIST_FETCHED, payload: result });
+      callback();
+    })
+    .catch(err => console.error(err.message));
 };
 
 export const favoritesAction = (ticker, method) => dispatch => {
