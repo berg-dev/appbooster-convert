@@ -4,7 +4,7 @@ import ConverterView from './ConverterView';
 
 const propTypes = {
   pair: PropTypes.array.isRequired,
-  currenciesList: PropTypes.object.isRequired,
+  currenciesList: PropTypes.array.isRequired,
   rate: PropTypes.object.isRequired,
   changeItemInPair: PropTypes.func.isRequired,
 };

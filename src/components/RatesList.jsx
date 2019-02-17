@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ExchangeItem from './ExchangeItem';
 
 const propsTypes = {
-  list: PropTypes.object.isRequired,
+  list: PropTypes.array.isRequired,
   baseCurrency: PropTypes.object.isRequired,
   favoritesAction: PropTypes.func.isRequired,
 };

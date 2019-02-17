@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   data: PropTypes.array.isRequired,
-  currenciesList: PropTypes.object.isRequired,
+  currenciesList: PropTypes.array.isRequired,
   rate: PropTypes.number.isRequired,
   multiplier: PropTypes.string.isRequired,
   pairItem: PropTypes.number.isRequired,
@@ -95,8 +95,8 @@ class ConverterView extends PureComponent {
     return (
       <React.Fragment>
         <div className="ConverterView__tools">
-          <button tabIndex={2} onClick={this.toggleEditBox}>
-            e
+          <button tabIndex={2} onClick={this.toggleEditBox} className="ConverterView__changer">
+            Change
           </button>
         </div>
         <div className="ConverterView__flag">{currency.flag || '?'}</div>

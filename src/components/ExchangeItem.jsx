@@ -68,7 +68,7 @@ class ExchangeItem extends Component {
             </div>
             <div className="ExchangeItem__rate-value">{this.computedValue(data.inverseRate)}</div>
           </div>
-          <NavLink to={`/convert?${baseCurrency.ticker}+${data.ticker}`} className="ExchangeItem__link" />
+          <NavLink to={`/convert?base=${baseCurrency.ticker}&target=${data.ticker}`} className="ExchangeItem__link" />
         </div>
       </article>
     );

@@ -7,7 +7,7 @@ const propTypes = {
   className: PropTypes.string,
   baseCurrency: PropTypes.shape({}).isRequired,
   baseCurrencyUpdater: PropTypes.func.isRequired,
-  currenciesList: PropTypes.object.isRequired,
+  currenciesList: PropTypes.array.isRequired,
 };
 
 const defaultProps = {
@@ -123,7 +123,7 @@ class CurrencyPicker extends Component {
               placeholder="search here"
               className="CurrencyPicker__search-input"
               onChange={this.updateFilter}
-              disabled={currenciesList.isEmpty()}
+              disabled={currenciesList.length <= 0}
             />
           </div>
           <div className="CurrencyPicker__box-current">
@@ -140,7 +140,7 @@ class CurrencyPicker extends Component {
           <div className="CurrencyPicker__label CurrencyPicker__label_in-box">Choose base currency</div>
         </div>
         <div className="CurrencyPicker__box-list">
-          {currenciesList.isEmpty() ? (
+          {currenciesList.length <= 0 ? (
             <div className="CurrencyPicker__list-loading">Loading...</div>
           ) : (
             <ul className="CurrencyPicker__list">

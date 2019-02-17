@@ -10,7 +10,7 @@ const propTypes = {
     path: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
   }).isRequired,
-  currenciesList: PropTypes.object.isRequired,
+  currenciesList: PropTypes.array.isRequired,
   updateBaseCurrency: PropTypes.func.isRequired,
 };
 
